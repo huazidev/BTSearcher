@@ -5,6 +5,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
@@ -12,9 +13,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.huazidev.btsearcher.R;
+import com.huazidev.btsearcher.data.SearchModel;
 import com.huazidev.btsearcher.util.ToastUtils;
 
 import butterknife.BindView;
+import me.drakeet.multitype.Items;
+import me.drakeet.multitype.MultiTypeAdapter;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -22,10 +26,11 @@ public class MainActivity extends BaseActivity
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.drawer_layout) DrawerLayout drawer;
     @BindView(R.id.nav_view) NavigationView navigationView;
-    @BindView(R.id.recycler_view) RecyclerView mRecyclerView;
+    @BindView(R.id.recycler_view) RecyclerView recyclerView;
 
     private ActionBarDrawerToggle toggle;
-
+    private MultiTypeAdapter adapter;
+    private Items dataList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,16 @@ public class MainActivity extends BaseActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+        setupRecyclerView();
+    }
+
+    public void setupRecyclerView() {
+        adapter = new MultiTypeAdapter();
+        dataList = new Items();
+        adapter.setItems(dataList);
+        adapter.register(SearchModel.class, new SearchItemViewBinder());
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
     }
 
     @Override
@@ -100,4 +115,6 @@ public class MainActivity extends BaseActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
+
