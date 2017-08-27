@@ -14,7 +14,11 @@ import android.view.MenuItem;
 
 import com.huazidev.btsearcher.R;
 import com.huazidev.btsearcher.data.SearchModel;
+import com.huazidev.btsearcher.net.SOBTParseHelper;
+import com.huazidev.btsearcher.net.SearchCallback;
 import com.huazidev.btsearcher.util.ToastUtils;
+
+import java.util.List;
 
 import butterknife.BindView;
 import me.drakeet.multitype.Items;
@@ -54,6 +58,22 @@ public class MainActivity extends BaseActivity
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
     }
 
+    public void loadData(String searchKey) {
+        SOBTParseHelper.getSearchList(searchKey, 1, new SearchCallback() {
+            @Override
+            public void onSuccess(List<SearchModel> searchList) {
+                dataList.clear();
+                dataList.addAll(searchList);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure() {
+                ToastUtils.shortT(R.string.load_data_error);
+            }
+        });
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -77,7 +97,7 @@ public class MainActivity extends BaseActivity
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                ToastUtils.shortT(query);
+                loadData(query);
                 return false;
             }
 
