@@ -8,6 +8,6 @@
     <string name="action_search">search</string>
 
     <string name="load_data_error">获取数据失败</string>
-    <string name="sobt_search_url" formatted="false">http://www.sobt8.com/q/%s_time_%d</string>
+    <string name="sobt_search_url" formatted="false">https://www.sobt8.com/q/%s.html</string>
 
 </resources>

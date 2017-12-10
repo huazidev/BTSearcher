@@ -11,7 +11,7 @@ import butterknife.ButterKnife;
 /**
  * @author hua on 2017/8/14.
  */
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     protected Context mContext;
 
@@ -19,12 +19,22 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = this;
+        initVariables();
+        loadData();
     }
 
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
         super.setContentView(layoutResID);
         ButterKnife.bind(this);
+    }
+
+    protected void initVariables() {
+
+    }
+
+    protected void loadData(){
+
     }
 
     @Override

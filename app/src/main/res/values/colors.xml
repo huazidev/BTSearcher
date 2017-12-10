@@ -3,6 +3,7 @@
     <color name="colorPrimary">#313332</color>
     <color name="colorPrimaryDark">#222322</color>
     <color name="colorAccent">@color/gray</color>
+    <color name="window_background">@color/pale_grey</color>
 
     <!-- from Zeplin -->
     <color name="white">#ffffff</color>
