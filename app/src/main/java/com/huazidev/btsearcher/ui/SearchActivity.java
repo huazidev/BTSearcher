@@ -57,14 +57,14 @@ public class SearchActivity extends BaseActivity {
     }
 
     private void setupToolbar() {
-        toolbar.setTitle(searchStr);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(searchStr);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-        setSupportActionBar(toolbar);
     }
 
     private void setupHRecyclerView() {
