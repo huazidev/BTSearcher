@@ -3,6 +3,8 @@ package com.huazidev.btsearcher.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.huazidev.btsearcher.R;
 import com.huazidev.btsearcher.common.Extra;
@@ -20,6 +22,7 @@ import me.drakeet.multitype.MultiTypeAdapter;
 
 public class SearchActivity extends BaseActivity {
 
+    @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.recycler_view) HRecyclerView hRecyclerView;
 
     private MultiTypeAdapter adapter;
@@ -44,12 +47,24 @@ public class SearchActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        setupToolbar();
         setupHRecyclerView();
     }
 
     @Override
     protected void loadData() {
         getData(searchStr, page);
+    }
+
+    private void setupToolbar() {
+        toolbar.setTitle(searchStr);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        setSupportActionBar(toolbar);
     }
 
     private void setupHRecyclerView() {
