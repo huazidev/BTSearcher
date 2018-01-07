@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.huazidev.btsearcher.R;
+import com.huazidev.btsearcher.common.GlideHepler;
 
 import butterknife.BindView;
 
@@ -27,6 +28,8 @@ public class MainActivity extends BaseActivity
     @BindView(R.id.search_icon) ImageView searchBtn;
 
     private ActionBarDrawerToggle toggle;
+
+    private static String headerImageUrl = "http://7lrznk.com1.z0.glb.clouddn.com/2014042517111588.jpg";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +61,10 @@ public class MainActivity extends BaseActivity
                 startSearchActivity(searchView.getQuery().toString());
             }
         });
-    }
 
+        ImageView headerBackgroundImage = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.background_image);
+        GlideHepler.loadImage(headerBackgroundImage, headerImageUrl);
+    }
 
     private void startSearchActivity(String query) {
         if (!TextUtils.isEmpty(query)) {

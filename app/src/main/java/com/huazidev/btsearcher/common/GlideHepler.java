@@ -34,7 +34,8 @@ public final class GlideHepler {
     }
 
     public static void loadImage(ImageView target, Object model, @DrawableRes int placeholder) {
-        request(target, model, placeholder);
+        request(target, model, placeholder)
+                .into(target);
     }
 
 }
