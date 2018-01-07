@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.huazidev.btsearcher.R;
-import com.huazidev.btsearcher.common.GlideHepler;
+import com.huazidev.btsearcher.common.GlideHelper;
 
 import butterknife.BindView;
 
@@ -63,7 +63,7 @@ public class MainActivity extends BaseActivity
         });
 
         ImageView headerBackgroundImage = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.background_image);
-        GlideHepler.loadImage(headerBackgroundImage, headerImageUrl);
+        GlideHelper.loadImage(headerBackgroundImage, headerImageUrl);
     }
 
     private void startSearchActivity(String query) {
