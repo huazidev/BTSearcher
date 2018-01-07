@@ -7,8 +7,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.huazidev.btsearcher.R;
 
@@ -21,6 +24,7 @@ public class MainActivity extends BaseActivity
     @BindView(R.id.drawer_layout) DrawerLayout drawer;
     @BindView(R.id.nav_view) NavigationView navigationView;
     @BindView(R.id.search_view) SearchView searchView;
+    @BindView(R.id.search_icon) ImageView searchBtn;
 
     private ActionBarDrawerToggle toggle;
 
@@ -33,11 +37,12 @@ public class MainActivity extends BaseActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
         navigationView.setNavigationItemSelectedListener(this);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                SearchActivity.start(mContext, query);
+                startSearchActivity(query);
                 return false;
             }
 
@@ -46,8 +51,21 @@ public class MainActivity extends BaseActivity
                 return false;
             }
         });
+
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startSearchActivity(searchView.getQuery().toString());
+            }
+        });
     }
 
+
+    private void startSearchActivity(String query) {
+        if (!TextUtils.isEmpty(query)) {
+            SearchActivity.start(mContext, query);
+        }
+    }
 
     @Override
     protected void onDestroy() {
