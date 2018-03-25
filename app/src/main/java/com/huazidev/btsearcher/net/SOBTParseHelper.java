@@ -20,15 +20,15 @@ import timber.log.Timber;
  * @author hua on 2017/8/27.
  */
 public class SOBTParseHelper {
-    private static final String ROOT_URL = "http://www.sobt8.com";
+    private static final String ROOT_URL = "https://www.btmule.org";
 
     public static void getSearchList(String searchStr, int page, final SearchCallback callback) {
-        final String url = ResourceHelper.getString(R.string.sobt_search_url, searchStr, page);
+        final String url = ResourceHelper.getString(R.string.sobt_search_url, ROOT_URL, searchStr, page);
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    Document doc = Jsoup.connect(url).userAgent("Mozilla").get();
+                    Document doc = Jsoup.connect(url).timeout(30 * 1000).userAgent("Mozilla").get();
                     final List<SearchModel> searchList = getSearchItems(doc);
                     AndroidUtilities.runOnUIThread(new Runnable() {
                         @Override
