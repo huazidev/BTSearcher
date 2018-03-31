@@ -26,9 +26,15 @@ public class SearchItemViewBinder extends ItemViewBinder<SearchModel, SearchItem
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull SearchModel item) {
+    protected void onBindViewHolder(@NonNull final ViewHolder holder, @NonNull SearchModel item) {
         holder.name.setText(item.name);
         holder.size.setText(item.size);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new ActionMenuDialog(holder.itemView.getContext()).show();
+            }
+        });
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
