@@ -1,2 +1,2 @@
 # BTSearcher
-A Android project to search BT
+An Android project to search BT
