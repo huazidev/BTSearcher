@@ -9,6 +9,7 @@
         android:id="@+id/copy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_white_pressed_gray"
         android:padding="15dp"
         android:text="@string/copy_magnet_link"/>
 
@@ -16,6 +17,7 @@
         android:id="@+id/xunlei"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_white_pressed_gray"
         android:padding="15dp"
         android:text="@string/open_xunlei"/>
 
@@ -23,7 +25,9 @@
         android:id="@+id/download"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_white_pressed_gray"
         android:padding="15dp"
+
         android:text="@string/download"/>
 
 </LinearLayout>

@@ -126,5 +126,6 @@
     <color name="color_message_remind">#383939</color>
     <color name="bg_moment_comment">#f4f6fc</color>
     <color name="tool_bar_color">@color/white</color>
+    <color name="pressed">@color/silver_three</color>
 
 </resources>
