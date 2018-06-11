@@ -9,5 +9,8 @@
 
     <string name="load_data_error">获取数据失败</string>
     <string name="sobt_search_url" formatted="false">%1$s/q/%2$s.html?sort=rel&amp;page=%3$d</string>
+    <string name="copy_magnet_link">复制磁力链接</string>
+    <string name="open_xunlei">打开迅雷</string>
+    <string name="download">下载</string>
 
 </resources>
